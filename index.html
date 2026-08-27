@@ -1,0 +1,1492 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- "black" keeps content below the status bar. "black-translucent" slides the
+     app underneath it, which is where the header used to disappear. -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Pour List">
+<meta name="theme-color" content="#17121B">
+<meta name="format-detection" content="telephone=yes">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACtElEQVR42u3dwVnqQBiGUZjHCty4cG0N9mUh9mUNNuPCpQEhBPL/8523gEuYOYRJBnOPL8+vB2mpYQgEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBwSHIJDcAgOwSE4BIfgEByCQ4JDcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ9172v0Ivj7fTMNi7x/f+x7AscJ/47W7j7/TUPCQQnHsOBnn56DmUcWtOXYZjn9ftOZRJS5IHzwoF75czaNKvFp52NBc9UI1jyrxUrbaACW/8RE4TCv+/Uyyw8fI+22Ggww4nDxKv81h4LzBrl8r9xi+Ffc973GrtD794ePlTfVekG4+lFedCTY/bXThPmI/ahdOeayMZpeyj/eRLONQZ8u+2towcwXaHseh54/HOi6rW94hjd2cg2NCH001N95b6TLifc9zvTfe6o9762/A9ruylUe/+9pohi37mnMwwap5kt9zVJuJOa6n/NiHjAAcRaZkpnsww0eWjJSvlR2nZ777thOuOcL/hhGOWlM1617PtFcrNufg2N/HxAonv89R8C8r4YjwMf03V8Qd0nvMYsKaJuX2+bZzGbLaDdpb2WpGc66Dsjbebp/XqCvkuF3ZW2Y37d5J4pb9ujkOvKvm9xxkwHHDZMfeiR9OBoJjpY9kQ+lrjvNzH352sSA9KcD3DhzLDsiAY1kDGb+1fD7H5i0+8AMRZw7BITgEh+AQHIJDcAgOwSE4JDgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkODQ6bo+vGXxcStla/ocGGcOwSE4BIfgEByCQ3BoljzBWM4cgkNwCA7BITgEh+AQHIJDgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJD3foBQVq3T4GytYkAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACtElEQVR42u3dwVnqQBiGUZjHCty4cG0N9mUh9mUNNuPCpQEhBPL/8523gEuYOYRJBnOPL8+vB2mpYQgEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBwSHIJDcAgOwSE4BIfgEByCQ4JDcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ9172v0Ivj7fTMNi7x/f+x7AscJ/47W7j7/TUPCQQnHsOBnn56DmUcWtOXYZjn9ftOZRJS5IHzwoF75czaNKvFp52NBc9UI1jyrxUrbaACW/8RE4TCv+/Uyyw8fI+22Ggww4nDxKv81h4LzBrl8r9xi+Ffc973GrtD794ePlTfVekG4+lFedCTY/bXThPmI/ahdOeayMZpeyj/eRLONQZ8u+2towcwXaHseh54/HOi6rW94hjd2cg2NCH001N95b6TLifc9zvTfe6o9762/A9ruylUe/+9pohi37mnMwwap5kt9zVJuJOa6n/NiHjAAcRaZkpnsww0eWjJSvlR2nZ777thOuOcL/hhGOWlM1617PtFcrNufg2N/HxAonv89R8C8r4YjwMf03V8Qd0nvMYsKaJuX2+bZzGbLaDdpb2WpGc66Dsjbebp/XqCvkuF3ZW2Y37d5J4pb9ujkOvKvm9xxkwHHDZMfeiR9OBoJjpY9kQ+lrjvNzH352sSA9KcD3DhzLDsiAY1kDGb+1fD7H5i0+8AMRZw7BITgEh+AQHIJDcAgOwSE4JDgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkODQ6bo+vGXxcStla/ocGGcOwSE4BIfgEByCQ3BoljzBWM4cgkNwCA7BITgEh+AQHIJDgkNwCA7BITgEh+AQHIJDcEhwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJD3foBQVq3T4GytYkAAAAASUVORK5CYII=">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiVGhlIFBvdXIgTGlzdCIsInNob3J0X25hbWUiOiJQb3VyIExpc3QiLCJkZXNjcmlwdGlvbiI6IlRhdGxlcidzIEJlc3QgMjAgQmFycyBpbiB0aGUgUGhpbGlwcGluZXMsIG1hcHBlZC4iLCJzdGFydF91cmwiOiIuIiwic2NvcGUiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJvcmllbnRhdGlvbiI6ImFueSIsImJhY2tncm91bmRfY29sb3IiOiIjMTcxMjFCIiwidGhlbWVfY29sb3IiOiIjMTcxMjFCIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBSUFBQURkdnZ0UUFBQUN2MGxFUVZSNDJ1M2QyVm5DUUJTQVVablBDbnp4d1dkcnNDOExzUzlxc0JrS0FCR0dETG5MK1J2SU1pZmJCT1BoL2UzalJacHQyQVVDU0FBSklBRWtBU1NBQkpBQWtnQVNRQUpJQUVrQUNTQUJKSUFrZ0FTUUFCSkFBa2dDU0FBSklBRWtBU1NBQkpBQWtnQVNRQUpJQUVrQUNTQUJKSUFFa0FTUUFCSkFBa2dDU0FBSklBRWtBU1NBQkpBQWtnRFNocjNHV1pYano2Znh1TEd2Nzk4Z2EzSUk5VitiNHhnNkg2SEk2d1pRb0hHNlBqekJWODg5ME00NzZOK2xCMTg5Z1BiY1RUY3VOL2pxQWJUUHpycHJpY0ZYRDZEUXUwdzVBQ25Gc1RUc3VMa0ZSVjQzZ0Z6STBteitzQk50ZVAxN29JYUdzbXp5c0VOdGJKZW5zSFc3ZGVJRnhicDNHcmtPbGVIUXRJR05BTlUybEhIVGhoMDljVWxhY2YxS2VtQU1CK3U5TFB6d3JRS2d2UXd0MHBQM3VoenVCMlZCbm9hZStZdkUxSGQxNlFGbHY2WmtmeWJ3TnA2ZTlvQ1NEa09OK1lqaFVMYkNBQ1Via2twem9hWHVnVklNVExHWjlHbzMwY0dIcDk1N21JSlBZV0VIcWVSYnZKcVA4ZjZpQTZCcWhxcWFyanlSR0dmTUNwOFJpODlFUnhpNTJ0ZlQrcTh5ZkE0Qm9LeWoyT0ZlM3N0VWVnQ0tONXg5NWhHR1V3STlBQVVhMm01em1PM3VnVXhTQXhUWFVFT2RUWi9DVm94MHozTmIzOGY0YmNlNzdaV3g5VHpRVnFQZStiNnErMFRpNDJQZi9LN2NUUFJEQWp6VEFUVHZnQjZBNWpYUUE5QzhDWG9BY3RjTUVCd0FwVE5FR0VEemh1Z0JhTjRRUFFETkc2TG5yeXA4b1d4RkY3OTZocEV6a0FBU1FBSklBa2dBQ1NBQkpJQWtnQVNRQUJKQUVrQUNTQUFKSUFrZ0FTU0FCSkFFa0FBU1FBSklBRWtBQ1NBQkpJQWtnQVNRQUJKQTByVXFmT0x1NHVmb1VsVGdtM25PUUFKSUFBa2dBU1FCSklDVUp2L3FRTTVBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FKSUFBa2dBU1FCSklBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FKSUFBa2dBU1NBSklBRWtBQlN0MDRKSjhCL0Z6RG00d0FBQUFCSlJVNUVya0pnZ2c9PSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9wbmciLCJwdXJwb3NlIjoiYW55In0seyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFINWtsRVFWUjQydTNhc1hIanZBSkdVY0xqQ3BnZ1lNd2ExSmNLWVYrc1FjMDRjYWh4WWx2MjhKNVR3VnVBK081cS96Zm11aTBBOUx3NUFnQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUJBQUFJTGVIY0VybmNmdUVPQUx0L3ZESWZnRjRPTUdENFRmTmVhNk9RVy9BMHlNcTdIK0FvQUdHQmNYWlAwRkFBMHdLNjdKK2wrYS93YmdvM2ZDcnNsRDhBc0F2d05zaXB1eS9uNEI0QUU0VWpmbDR4Y0FzQ2tHQ3dIQXJPUlAwbVU1U1FIQVkraWVvY3R5aGdLQUo5RTlQWmZsOUFRQUQ2TjdiaTdMdVFrQW5nZjR2QVVBanlSMlhHN0tjUWtBbmtyM29OeVVneElBUEJqd01Rc0FuZzM0akFVQWo2ZHdPTzdJNFFnQW5oRDRkQVVBRHdrZnJZOVdBUENjQ2dmaWRoeUlBT0JSQVFLQUJ1QXJSUUFBNjQ4QTRJSGg0MFFBOE16d1dTSUFlR3o0SUJFQVBEbDhpZ2dBSGg0K1FnUUF6dytmSHdLQVIvanBQSGIvWTN4NENBQ2VJajQ1Qk1DREJCOGJBdUJaWHQ0LytZZVgyci8vV0g4QndPUEVCNFlBNElrQ0FvQUd2TmlmLy9OTDZ0OS8vTjFDQVBCV05jRDZJd0I0c2ZpV0VBQ28vUWpvL1BYZitnc0FucTRHV0g4RUFBKzQzUURyandEZ0dSY2JZUDBSQUR6bVlnT3NQd0tBSjExc2dQWG5lc1pjTjZmUTRmKzY3dENzUDM0QitCMmdkdGJmK3ZzRjRCZUEzd0dtelJGWmZ3RkFBK0l6NTFnUUFEUUE2OC8xK1c4QW5qMGdBR2dBdmdFRUFPOGZ0NDhBWUFWdzd3Z0F0Z0EzamdBQTFoOEJ3Q2pnb2hFQVRBT3VHQUhBUU9CeUVRRE1CSzRWQWNCWTRFSVJBRXdHcmhJQndIRGdFaEVBekFldUR3SEFpQUFDZ0FiZzFoQUFyQW51Q3dIQXB1Q21FQUFzQys0SUFjQyt1QjBRQUt5TWV3RUJBT3NQQW9DNWNSMGdBQmdkRjRFQWdPbHhCUWdBR0NDSGp3Q0FHWExzQ0FBWUl3ZU9BSUJKQWdFQURYRE9DQURZSmllTUFHQ2hjTFlJQUhZS3A0b0FZSzF3bmdnQU5nc25pUUJndVhDR0NBRDJDNmVIQUFEV0h3SEFrRGswRUFETW1lTUNBY0NvT1NnUUFFeWJJd0lCd01BQkFvQUdPQmtRQUN5ZE13RUJ3TjQ1RFJBQXJKNXpRQUFjQWJiUENTQUFZQUg5MlJFQXNJUCsxQWdBV0VOL1hnUUFiS0kvS1FJQWx0R2ZFUUVBckQ4Q0FDYlMraU1BWUNpdFB3SUE4Ym0wL2dnQUdFMFFBTWcwUU1rUUFDaXVwL1ZIQUtDNG9kWWZBWURpa2xwL0JBQ0tlMnI5RVFBb3JxcjFSd0NndUszV0h3R0E0c0phZndRQWlqdHIvUkVBS0s2dDlVY0FvTGk1MWg4QkFCMENBWURHK0ZwL0JBQk1NQWdBWkJxZ1BRZ0FGQnRnL1JFQUtEYkEraU1BVUd5QTlVY0FvTmdBNjQ4QVFMRUIxaDhCZ0dJRHJEOENBTVVHV0g4RUFJb05zUDRJQUJRYllQMFJBQ2cyd1BvakFGQnNnUFZIQUtEWUFPdVBBQUFnQUpENUVlQ3Yvd2dBRkJ0Zy9SRUFLRGJBK2lNQVVHeUE5VWNBb05nQTY0OEFRTEVCMXArbU1kZk5LWEJ0NTdIL3lLOEU4QXNBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUVBQUFHZ1pjOTJjQXN1eW5NZnVFQ0p1OTRkRHdDOEFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQkFBQUFRQUFBRUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQU9DSk1kZk5LUUQ0QlFDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFQQnRIN2pIK0pxQkFiZWVBQUFBQUVsRlRrU3VRbUNDIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3BuZyIsInB1cnBvc2UiOiJhbnkifV19">
+<title>The Pour List — Tatler Best 20 Bars PH 2026</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#17121B;
+    --surface:#221A27;
+    --surface-2:#2C2233;
+    --line:#3A2E42;
+    --brass:#E0A040;
+    --menthe:#7FB6A9;
+    --bone:#F0E8DC;
+    --dim:#9C8FA6;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html,body{height:100%;overscroll-behavior:none}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    overflow:hidden;
+    -webkit-text-size-adjust:100%;
+    -webkit-tap-highlight-color:rgba(224,160,64,.18);
+  }
+
+  /* Height is the fragile part on phones. --app-h is measured in JS from the
+     real visible viewport; the CSS values below are only fallbacks for the
+     first paint and for browsers where the script hasn't run yet. */
+  #app{
+    display:flex;flex-direction:column;
+    height:100vh;
+    height:100svh;
+    height:var(--app-h, 100dvh);
+    padding-left:env(safe-area-inset-left);
+    padding-right:env(safe-area-inset-right);
+    overflow:hidden;
+  }
+
+  /* Momentum scrolling everywhere that scrolls */
+  .list,.detail,.shelf,.filters.types,.shots{-webkit-overflow-scrolling:touch}
+
+  /* ---------- Header ---------- */
+  header{
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#1E1723 0%,var(--ink) 100%);
+    padding:calc(14px + env(safe-area-inset-top)) 20px 10px;
+    flex:0 0 auto;
+  }
+  .head-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  h1{
+    font-family:'Instrument Serif',Georgia,serif;
+    font-weight:400;font-size:30px;letter-spacing:.01em;line-height:1;
+  }
+  h1 em{font-style:italic;color:var(--brass)}
+  .sub{
+    font-family:'Space Mono',monospace;font-size:10.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+  }
+  .tab-count{
+    margin-left:auto;font-family:'Space Mono',monospace;font-size:11px;
+    letter-spacing:.1em;color:var(--dim);white-space:nowrap;
+  }
+  .tab-count b{color:var(--brass);font-size:15px}
+
+  /* ---------- Signature: the shelf of 20 glasses ---------- */
+  .shelf{
+    display:flex;gap:5px;margin-top:11px;padding-bottom:7px;
+    border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;
+  }
+  .shelf::-webkit-scrollbar{display:none}
+  .glass{
+    flex:0 0 auto;width:15px;height:22px;cursor:pointer;
+    background:none;border:0;padding:0;opacity:.5;transition:opacity .18s,transform .18s;
+  }
+  .glass:hover{opacity:1;transform:translateY(-2px)}
+  .glass:focus-visible{outline:2px solid var(--brass);outline-offset:2px;opacity:1}
+  .glass.on{opacity:1}
+  .glass svg{display:block;width:100%;height:100%}
+
+  /* ---------- Filter chips ---------- */
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.09em;
+    text-transform:uppercase;padding:6px 11px;border-radius:100px;
+    border:1px solid var(--line);background:transparent;color:var(--dim);cursor:pointer;
+    transition:.15s;
+  }
+  .chip:hover{border-color:var(--brass);color:var(--bone)}
+  .chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#241A0C;font-weight:700}
+  .chip:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+  .filters.types{
+    flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:1px;margin-top:7px;
+  }
+  .filters.types::-webkit-scrollbar{display:none}
+  .chip.type{border-style:dashed;color:var(--menthe);border-color:#3F4F4C;white-space:nowrap}
+  .chip.type:hover{border-color:var(--menthe);color:var(--bone)}
+  .chip.type[aria-pressed="true"]{
+    background:var(--menthe);border-color:var(--menthe);border-style:solid;
+    color:#12211E;font-weight:700;
+  }
+  .chip .n{opacity:.6;margin-left:4px}
+
+  /* ---------- Body split ---------- */
+  .split{display:flex;flex:1 1 auto;min-height:0}
+  #map{flex:1 1 auto;background:#12101A;min-height:160px}
+  .leaflet-container{background:#12101A;font-family:'Archivo',sans-serif}
+  .leaflet-control-attribution{
+    background:rgba(23,18,27,.86)!important;color:var(--dim)!important;font-size:9px!important;
+  }
+  .leaflet-control-attribution a{color:var(--menthe)!important}
+  .leaflet-bar a{background:var(--surface)!important;color:var(--bone)!important;border-color:var(--line)!important}
+  .leaflet-bar a:hover{background:var(--surface-2)!important}
+
+  aside{
+    flex:0 0 380px;border-left:1px solid var(--line);background:var(--surface);
+    display:flex;flex-direction:column;min-height:0;
+  }
+
+  /* ---------- Directory toolbar ---------- */
+  .toolbar{
+    flex:0 0 auto;padding:12px 16px 11px;border-bottom:1px solid var(--line);
+    background:var(--surface);
+  }
+  .toolbar.hide{display:none}
+
+  .searchwrap{position:relative;margin-bottom:9px}
+  #q{
+    width:100%;padding:10px 32px 10px 12px;border-radius:3px;
+    border:1px solid var(--line);background:var(--ink);color:var(--bone);
+    font-family:inherit;font-size:16px; /* 16px stops iOS zooming on focus */
+  }
+  #q::placeholder{color:#6E6376}
+  #q:focus{outline:none;border-color:var(--brass)}
+  #q::-webkit-search-cancel-button{display:none}
+  .qclear{
+    position:absolute;right:6px;top:50%;transform:translateY(-50%);
+    width:26px;height:26px;border:0;border-radius:50%;background:transparent;
+    color:var(--dim);font-size:19px;line-height:1;cursor:pointer;
+  }
+  .qclear:hover{color:var(--bone)}
+
+  .toolrow{display:flex;align-items:center;gap:9px;margin-top:10px;flex-wrap:wrap}
+  .count{
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  .clearall{
+    background:none;border:0;padding:0;cursor:pointer;color:var(--brass);
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.11em;
+    text-transform:uppercase;text-decoration:underline;text-underline-offset:2px;
+  }
+  .sortwrap{
+    margin-left:auto;display:flex;align-items:center;gap:5px;
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--dim);
+  }
+  #sort{
+    background:var(--ink);color:var(--bone);border:1px solid var(--line);
+    border-radius:3px;padding:5px 6px;font-family:inherit;font-size:11px;cursor:pointer;
+  }
+  #sort:focus{outline:none;border-color:var(--brass)}
+
+  .reset{
+    background:none;border:0;margin-left:8px;padding:0;cursor:pointer;color:var(--dim);
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.11em;
+    text-transform:uppercase;text-decoration:underline;text-underline-offset:2px;
+  }
+  .reset:hover{color:var(--brass)}
+
+  /* ---------- Legend swatches ---------- */
+  .lg{display:inline-block;width:9px;height:9px;border-radius:50%;margin:0 2px 0 7px}
+  .lg.poured{background:var(--brass)}
+  .lg.listed{background:transparent;border:2px solid var(--menthe)}
+  .lg.none{background:#D3C7DE}
+  footer .fsep{margin:0 4px;opacity:.5}
+
+  /* ---------- First-run tip ---------- */
+  .tip{
+    flex:0 0 auto;margin:12px 16px 0;padding:13px 15px;border-radius:3px;
+    background:var(--surface-2);border:1px solid var(--line);border-left:2px solid var(--brass);
+  }
+  .tip p{font-size:12.5px;line-height:1.6;color:#D2C8BD;margin-bottom:7px}
+  .tip b{color:var(--bone);font-weight:600}
+  #tipgo{
+    margin-top:3px;background:none;border:1px solid var(--line);border-radius:3px;
+    padding:7px 14px;color:var(--brass);cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  }
+  #tipgo:hover{border-color:var(--brass)}
+
+  /* ---------- Directory list ---------- */
+  .list{overflow-y:auto;flex:1 1 auto}
+  .list.hide{display:none}
+  .row{
+    display:flex;align-items:center;gap:8px;width:100%;
+    padding-right:12px;border-bottom:1px solid var(--line);transition:background .13s;
+  }
+  .row:hover{background:var(--surface-2)}
+  .rowmain{
+    display:flex;align-items:center;gap:11px;flex:1 1 auto;min-width:0;
+    text-align:left;padding:11px 4px 11px 16px;
+    background:none;border:0;color:inherit;cursor:pointer;font-family:inherit;
+  }
+  .rowmain:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+  .rowtext{min-width:0;flex:1 1 auto}
+  .row-name{display:block;font-size:14.5px;font-weight:500;line-height:1.25}
+  .row-kind{
+    display:block;font-size:11px;line-height:1.35;color:var(--menthe);
+    margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .row-meta{
+    display:block;font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);margin-top:3px;
+  }
+  .row-rate{color:var(--brass);letter-spacing:.06em}
+
+  /* Quick mark buttons */
+  .marks{display:flex;gap:4px;margin-left:auto;flex:0 0 auto}
+  .mk{
+    width:30px;height:30px;border-radius:50%;cursor:pointer;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    background:transparent;border:1px solid var(--line);transition:.14s;
+  }
+  .mk i{display:block;width:11px;height:11px;border-radius:50%;background:#6E6376}
+  .mk.ring i{background:transparent;border:2px solid #6E6376}
+  .mk:hover{border-color:var(--dim)}
+  .mk.on-poured{border-color:var(--brass);background:rgba(224,160,64,.16)}
+  .mk.on-poured i{background:var(--brass)}
+  .mk.on-listed{border-color:var(--menthe);background:rgba(127,182,169,.14)}
+  .mk.on-listed i{border-color:var(--menthe)}
+  .mk:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+  .empty{padding:44px 20px;text-align:center;color:var(--dim);font-size:13px;line-height:1.7}
+
+  /* ---------- Detail ---------- */
+  .detail{overflow-y:auto;flex:1 1 auto;display:none}
+  .detail.show{display:block}
+  .back{
+    position:sticky;top:0;z-index:5;width:100%;text-align:left;
+    background:var(--surface);border:0;border-bottom:1px solid var(--line);
+    padding:12px 16px;color:var(--dim);cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
+  }
+  .back:hover{color:var(--brass)}
+  .back:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+
+  .d-pad{padding:18px 20px 34px}
+  .d-name{font-family:'Instrument Serif',serif;font-size:31px;line-height:1.05;margin-bottom:6px}
+  .d-line{
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--dim);display:flex;gap:9px;flex-wrap:wrap;align-items:center;
+  }
+  .d-line .rate{color:var(--brass)}
+
+  .kinds{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 0}
+  .kind{
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.09em;
+    text-transform:uppercase;padding:5px 10px;border-radius:2px;
+    background:rgba(127,182,169,.13);border:1px solid #3F4F4C;color:var(--menthe);
+  }
+  .tags{display:flex;gap:5px;flex-wrap:wrap;margin:9px 0 0}
+  .tag{
+    font-size:10.5px;letter-spacing:.04em;padding:3px 9px;border-radius:100px;
+    border:1px solid var(--line);color:var(--dim);
+  }
+
+  .d-vibe{font-size:14px;line-height:1.6;color:#DCD2C6;margin-top:14px}
+
+  .status{display:flex;gap:7px;margin:18px 0 4px}
+  .st{
+    flex:1;padding:11px 6px;border-radius:3px;border:1px solid var(--line);
+    background:transparent;color:var(--dim);cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    transition:.15s;
+  }
+  .st:hover{color:var(--bone);border-color:var(--dim)}
+  .st:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+  .st.on-poured{background:var(--brass);border-color:var(--brass);color:#241A0C;font-weight:700}
+  .st.on-listed{border-color:var(--menthe);color:var(--menthe);font-weight:700}
+
+  .sec{margin-top:24px}
+  .sec-h{
+    font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--brass);padding-bottom:7px;
+    border-bottom:1px solid var(--line);margin-bottom:11px;
+  }
+  .order{display:flex;align-items:baseline;gap:6px;padding:5px 0;font-size:13.5px}
+  .order .n{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--dim);flex:0 0 16px}
+  .order .lead{flex:1 1 auto;border-bottom:1px dotted var(--line);transform:translateY(-3px)}
+
+  .kv{display:flex;gap:12px;padding:6px 0;font-size:13px;line-height:1.45}
+  .kv .k{
+    flex:0 0 76px;font-family:'Space Mono',monospace;font-size:9.5px;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--dim);padding-top:3px;
+  }
+  .kv .v{flex:1 1 auto;color:#DCD2C6;min-width:0;word-wrap:break-word}
+  .kv .v a{color:var(--menthe);text-decoration:none;border-bottom:1px solid transparent}
+  .kv .v a:hover{border-bottom-color:var(--menthe)}
+
+  .hours{font-family:'Space Mono',monospace;font-size:11px;line-height:1.85;color:#C9BEB4}
+  .hours .closed{color:#7A6E82}
+  .hours .today{color:var(--brass)}
+
+  .note{
+    margin-top:22px;padding:11px 13px;border-left:2px solid var(--line);
+    font-size:11.5px;line-height:1.55;color:var(--dim);
+  }
+
+  /* ---------- Photos ---------- */
+  .shots{
+    display:flex;gap:6px;overflow-x:auto;padding:0 0 3px;margin-bottom:16px;
+    scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+  }
+  .shots::-webkit-scrollbar{height:5px}
+  .shots::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+  .shot{
+    flex:0 0 auto;width:132px;height:176px;border-radius:2px;overflow:hidden;
+    background:var(--surface-2);border:1px solid var(--line);position:relative;
+  }
+  .shot img{width:100%;height:100%;object-fit:cover;display:block}
+  .shot .ph{
+    position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    font-family:'Instrument Serif',serif;font-size:34px;color:#4B3F55;
+  }
+  .shot.failed img{display:none}
+  .shot.failed .ph{display:flex}
+
+  .thumb{
+    flex:0 0 auto;width:42px;height:42px;border-radius:2px;overflow:hidden;
+    background:var(--surface-2);border:1px solid var(--line);position:relative;
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .ph{
+    position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    font-family:'Instrument Serif',serif;font-size:17px;color:#4B3F55;
+  }
+  .thumb.failed img{display:none}
+  .thumb.failed .ph{display:flex}
+
+  .credit{
+    font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:#5F5568;margin:-11px 0 16px;
+  }
+
+  /* ---------- Map backdrop fallback ---------- */
+  .leaflet-tile-pane{
+    filter:invert(1) hue-rotate(180deg) brightness(.78) contrast(1.05) saturate(.55);
+  }
+  .leaflet-container.no-tiles{
+    background-color:#12101A;
+    background-image:
+      linear-gradient(rgba(58,46,66,.42) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(58,46,66,.42) 1px, transparent 1px),
+      linear-gradient(rgba(58,46,66,.2) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(58,46,66,.2) 1px, transparent 1px);
+    background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  }
+  .leaflet-container.no-tiles .leaflet-tile-pane{filter:none}
+  .district{
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.18em;
+    text-transform:uppercase;color:#6E6376;white-space:nowrap;pointer-events:none;
+  }
+  .notice{
+    position:absolute;left:10px;bottom:10px;z-index:600;max-width:270px;
+    background:rgba(34,26,39,.94);border:1px solid var(--line);border-left:2px solid var(--brass);
+    padding:9px 11px;font-size:11px;line-height:1.5;color:var(--dim);border-radius:2px;
+  }
+  .notice b{color:var(--bone);font-weight:500}
+  .leaflet-control-scale-line{
+    background:rgba(34,26,39,.85)!important;border-color:var(--line)!important;
+    color:var(--dim)!important;font-family:'Space Mono',monospace!important;font-size:9px!important;
+  }
+
+  /* ---------- Markers ---------- */
+  .pin{
+    width:15px;height:15px;border-radius:50%;
+    background:#D3C7DE;border:2px solid #17121B;
+    box-shadow:0 0 0 1px #D3C7DE;transition:transform .15s;
+  }
+  .pin.poured{background:var(--brass);box-shadow:0 0 0 1px var(--brass),0 0 13px rgba(224,160,64,.6)}
+  .pin.listed{background:transparent;border-color:var(--menthe);box-shadow:0 0 0 1px rgba(127,182,169,.5)}
+  .pin.active{transform:scale(1.55)}
+  .pin.hi{
+    transform:scale(1.75);
+    box-shadow:0 0 0 2px var(--bone),0 0 16px rgba(240,232,220,.55);
+    z-index:900;
+  }
+  .pin.poured.hi{box-shadow:0 0 0 2px var(--bone),0 0 18px rgba(224,160,64,.85)}
+  .pin.listed.hi{box-shadow:0 0 0 2px var(--bone),0 0 18px rgba(127,182,169,.8)}
+
+  .pin-tip.leaflet-tooltip{
+    background:var(--bone);color:#1B1420;border:0;border-radius:2px;
+    padding:3px 8px;font-family:'Archivo',sans-serif;font-size:11.5px;font-weight:600;
+    box-shadow:0 2px 10px rgba(0,0,0,.5);
+  }
+  .pin-tip.leaflet-tooltip-top:before{border-top-color:var(--bone)}
+
+  /* The hovered row echoes the pin highlight */
+  .row.hi{background:var(--surface-2);box-shadow:inset 2px 0 0 var(--bone)}
+
+  .leaflet-popup-content-wrapper{
+    background:var(--surface-2);color:var(--bone);border-radius:3px;border:1px solid var(--line);
+  }
+  .leaflet-popup-tip{background:var(--surface-2);border:1px solid var(--line)}
+  .leaflet-popup-content{margin:9px 13px;font-size:13px}
+  .leaflet-popup-close-button{color:var(--dim)!important}
+  .pop-n{font-family:'Instrument Serif',serif;font-size:17px;line-height:1.15}
+  .pop-m{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);margin-top:3px}
+
+  footer{
+    flex:0 0 auto;border-top:1px solid var(--line);
+    padding:8px 20px calc(8px + env(safe-area-inset-bottom));
+    font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;color:#6E6376;
+  }
+  footer a{color:#6E6376}
+
+  /* ---------- Short screens ----------
+     Landscape phones and standalone mode leave very little vertical room.
+     Shed the decorative parts of the header before the map loses height. */
+  @media (max-height:560px){
+    header{padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:7px}
+    h1{font-size:19px}
+    .sub{display:none}
+    .shelf{margin-top:7px;padding-bottom:5px}
+    .glass{height:18px}
+    .mtabs{margin-top:7px}
+    .mtab{padding:7px 6px}
+    footer{padding-top:5px;padding-bottom:calc(5px + env(safe-area-inset-bottom));font-size:8px}
+  }
+  @media (max-height:440px){
+    .shelf{display:none}          /* tally is decorative; the map is not */
+    footer{display:none}
+  }
+
+  /* Installed to the home screen: no browser chrome, so reclaim a little room */
+  @media (display-mode:standalone){
+    header{padding-bottom:8px}
+    footer{font-size:8.5px}
+  }
+
+  /* ---------- Map / Directory toggle (phones only) ---------- */
+  .mtabs{display:none;gap:0;margin-top:10px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .mtab{
+    flex:1;padding:10px 6px;background:transparent;border:0;color:var(--dim);cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  }
+  .mtab[aria-pressed="true"]{background:var(--surface-2);color:var(--bone);font-weight:700}
+  .mtab:focus-visible{outline:2px solid var(--brass);outline-offset:-2px}
+
+  /* ---------- Fullscreen toggle ---------- */
+  .fs{
+    display:none;background:none;border:1px solid var(--line);border-radius:3px;
+    width:30px;height:30px;margin-left:9px;cursor:pointer;color:var(--dim);
+    font-size:13px;line-height:1;padding:0;flex:0 0 auto;
+  }
+  .fs:hover{border-color:var(--brass);color:var(--brass)}
+  .fs.avail{display:inline-flex;align-items:center;justify-content:center}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:820px){
+    header{padding-left:16px;padding-right:16px}
+    h1{font-size:23px}
+    .sub{font-size:9.5px}
+
+    .glass{width:20px;height:30px;padding:4px 0}
+    .shelf{gap:3px;margin-top:9px}
+    .chip{padding:9px 13px;font-size:10.5px}
+    .rowmain{padding-top:13px;padding-bottom:13px}
+    .row{min-height:62px}
+    .back{padding:15px 16px}
+    .kind{padding:7px 11px}
+
+    .mtabs{display:flex}
+
+    /* One pane at a time, each getting the whole screen */
+    .split{flex-direction:column}
+    #map,aside{width:100%}
+    #map{flex:1 1 auto;min-height:0}
+    aside{flex:1 1 auto;border-left:0;border-top:1px solid var(--line);min-height:0}
+
+    body.v-map aside{display:none}
+    body.v-list #map{display:none}
+
+    .shot{width:118px;height:158px}
+    .notice{max-width:calc(100% - 20px);font-size:10.5px}
+    footer{font-size:8.5px;padding-left:16px;padding-right:16px}
+  }
+
+  @media (max-width:420px){
+    h1{font-size:21px}
+    .sub{display:none}
+    .d-name{font-size:26px}
+  }
+
+  @media (hover:none){
+    .row:hover{background:none}
+    .row:active{background:var(--surface-2)}
+    .chip:active,.st:active,.mtab:active{opacity:.65}
+    .glass:hover{transform:none}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+
+<div id="app">
+  <header>
+    <div class="head-row">
+      <h1>The <em>Pour</em> List</h1>
+      <span class="sub">Tatler Best 20 Bars &middot; Philippines 2026</span>
+      <span class="tab-count">
+        <b id="cnt">0</b> / 20 poured
+        <button class="reset" id="reset" hidden>reset</button>
+      </span>
+      <button class="fs" id="fs" title="Fullscreen" aria-label="Toggle fullscreen">&#9974;</button>
+    </div>
+    <div class="shelf" id="shelf" role="group"
+         aria-label="Your tally. Each glass is one bar; select one to open it."></div>
+    <div class="mtabs" role="group" aria-label="Switch view">
+      <button class="mtab" data-v="map" aria-pressed="true">Map</button>
+      <button class="mtab" data-v="list" aria-pressed="false">Directory</button>
+    </div>
+  </header>
+
+  <div class="split">
+    <div id="map"></div>
+    <aside>
+      <div class="toolbar" id="toolbar">
+        <div class="searchwrap">
+          <input id="q" type="search" autocomplete="off" spellcheck="false"
+                 placeholder="Search a bar, area or drink" aria-label="Search bars">
+          <button class="qclear" id="qclear" aria-label="Clear search" hidden>&times;</button>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter by status">
+          <button class="chip" data-f="all" aria-pressed="true">All</button>
+          <button class="chip" data-f="poured" aria-pressed="false">Poured</button>
+          <button class="chip" data-f="listed" aria-pressed="false">On the list</button>
+          <button class="chip" data-f="none" aria-pressed="false">Unmarked</button>
+        </div>
+
+        <div class="filters types" id="types" role="group" aria-label="Filter by type of bar"></div>
+
+        <div class="toolrow">
+          <span class="count" id="count"></span>
+          <button class="clearall" id="clearall" hidden>Clear filters</button>
+          <label class="sortwrap">
+            <span>Sort</span>
+            <select id="sort" aria-label="Sort the directory">
+              <option value="name">A&ndash;Z</option>
+              <option value="rating">Rating</option>
+              <option value="area">Area</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="tip" id="tip" hidden>
+        <p><b>Select any bar</b> for photos, hours and what to order.</p>
+        <p>Mark it <span class="lg poured"></span> <b>poured</b> once you&rsquo;ve been,
+           or <span class="lg listed"></span> <b>on the list</b> to save it for later.
+           Bars you haven&rsquo;t marked stay <span class="lg none"></span> pale.</p>
+        <button id="tipgo">Got it</button>
+      </div>
+
+      <div class="list" id="list"></div>
+      <div class="detail" id="detail"></div>
+    </aside>
+  </div>
+
+  <footer>
+    <span class="lg poured"></span> Poured
+    <span class="lg listed"></span> On the list
+    <span class="lg none"></span> Unmarked
+    <span class="fsep">&middot;</span>
+    List: Tatler Philippines &middot; Ratings &amp; hours: Google &middot;
+    Map: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* ============================================================
+   DATA — edit here to add bars, photos, or your own notes.
+   status: null (unmarked) | 'poured' | 'listed'
+   ============================================================ */
+const BARS = [
+  {
+    name:"The Back Room", area:"BGC, Taguig", lat:14.5523967, lng:121.04747,
+    addr:"Street level, Shangri-La The Fort, 30th St, BGC, Taguig",
+    rating:4.5, count:389, price:"₱600–900 a cocktail",
+    tags:["Speakeasy","1920s","Gin lab","Hotel bar"],
+    vibe:"Prohibition-era elegance behind a hotel's ground floor — low light, jazz, deep leather, and a house gin laboratory where you can blend your own. Service is the thing people write home about.",
+    orders:["Red C Note","Pints & Giggles","Bibilous-cious","A blend from the gin laboratory","The bar chow spread"],
+    hours:["Mon 6PM–2AM","Tue 6PM–2AM","Wed 6PM–2AM","Thu 6PM–2AM","Fri 6PM–2AM","Sat 6PM–2AM","Sun 6PM–2AM"],
+    phone:"+63 917 536 3287", ig:"https://www.instagram.com/backroomph",
+    web:"https://www.shangri-la.com/manila/shangrilaatthefort/dining/bars-lounges/the-back-room/",
+    award:"2026 Best 20 · 2025 Best Service"
+  },
+  {
+    name:"Bar by East", area:"Marikina", lat:14.6413331, lng:121.1043319,
+    addr:"G/F Lamp Quarters, Mayor Gil Fernando Ave, Marikina",
+    rating:4.7, count:78, price:"₱400–600 a cocktail",
+    tags:["Neighbourhood","Nostalgic","Architect-designed"],
+    vibe:"An architecture studio by day, a cocktail room by night. Drinks lean on Filipino childhood flavours; the room is small, dim and quiet enough to actually talk. Moving to a bigger Marikina space soon.",
+    orders:["Binibini","River Valley","Wintermelon Highball","Amaretto Sour","The gummy bear drink"],
+    hours:["Mon 5PM–1AM","Tue 5PM–1AM","Wed 5PM–1AM","Thu 5PM–1AM","Fri 5PM–2AM","Sat 5PM–2AM","Sun 5PM–2AM"],
+    phone:"+63 945 371 2982", ig:"https://www.instagram.com/barbyeast_",
+    web:"https://www.barbyeast.com", award:"2026 Best 20"
+  },
+  {
+    name:"Bar Flora", area:"Laging Handa, Quezon City", lat:14.6344681, lng:121.0336572,
+    addr:"49 Scout Rallos St, Laging Handa, Quezon City",
+    rating:4.6, count:109, price:"₱400–600 a cocktail",
+    tags:["Gin & tea","Botanical","Women-led","Zero-proof"],
+    vibe:"Where the tea ritual meets the gin library — seasonal menus, classic G&Ts, and 'teatails' with no alcohol at all. Cosy, conversational, and known for a women-centred style of hospitality.",
+    orders:["Tokyotini","Down in Kokomo","Not in Paris","A zero-proof teatail","Kung Pao Bao"],
+    hours:["Mon Closed","Tue 6PM–1AM","Wed 6PM–1AM","Thu 6PM–1AM","Fri 6PM–2AM","Sat 2PM–2AM","Sun 2PM–1AM"],
+    phone:"+63 917 856 5111", ig:"https://www.instagram.com/floraginbar",
+    web:"https://www.facebook.com/barflora", award:"2026 Best 20"
+  },
+  {
+    name:"Big Fuzz", area:"Legazpi Village, Makati", lat:14.5546731, lng:121.0144953,
+    addr:"2/F Creekside Building, Amorsolo cor V.A. Rufino St, Makati",
+    rating:4.9, count:87, price:"₱500–700 a cocktail",
+    tags:["Bar of the Year","Vinyl","Rock","Red door"],
+    vibe:"Behind a red door in Little Tokyo: an analogue room built around vinyl rock records and modern classics named after the music. Sit at the bar and let them build you something off-menu.",
+    orders:["12:51","Wild Eyed Boy","Penthouse Paul","Mojo's Jojo","A bespoke bartender's pour"],
+    hours:["Mon 6PM–1AM","Tue 6PM–1AM","Wed 6PM–1AM","Thu 6PM–1AM","Fri 6PM–2AM","Sat 6PM–2AM","Sun Closed"],
+    phone:"+63 917 896 5953", ig:"https://www.instagram.com/barbigfuzz/",
+    web:"", award:"2026 BAR OF THE YEAR · Best 20"
+  },
+  {
+    name:"Blank Space", area:"Mandala Park, Mandaluyong", lat:14.5884242, lng:121.0411805,
+    addr:"Unit 102, Building C, Mandala Park, 1552 Shaw Blvd, Mandaluyong",
+    rating:4.8, count:23, price:"₱400–550 a cocktail",
+    tags:["Taylor Swift","Playful","Big food menu","Easy parking"],
+    vibe:"A former event venue turned pop-fluent cocktail bar — drinks named for song lyrics, a few classics made with Kanye in mind, and a team that refuses to take itself seriously. Sofas upstairs, counter seats down.",
+    orders:["Bad Guys Good for a Weekend","Nasty Scar","Nightmare Dressed Like a Daydream","Next Mistake","Sinigang fried rice"],
+    hours:["Mon Closed","Tue 6PM–1AM","Wed 6PM–1AM","Thu 6PM–1AM","Fri 6PM–3AM","Sat 6PM–3AM","Sun 6PM–1AM"],
+    phone:"", ig:"https://www.instagram.com/blank_space_bar", web:"", award:"2026 Best 20"
+  },
+  {
+    name:"Blind Pig", area:"Legazpi Village, Makati", lat:14.5574876, lng:121.0159943,
+    addr:"G/F Windsor Tower, 163 Legazpi St, Legazpi Village, Makati",
+    rating:4.6, count:218, price:"₱500–700 a cocktail",
+    tags:["Speakeasy","Classics only","Very dark","Since 2011"],
+    vibe:"Often called Manila's first true speakeasy. Knock at the metal door with the braille sign. Inside: near-darkness, low voices, and no-gimmick classics from a bartender who's been there since opening night.",
+    orders:["Smokey Old Bastard","Haji Lane","Tog & Jerry","Wry Grin","Bartender's choice"],
+    hours:["Mon 6PM–2AM","Tue 6PM–2AM","Wed 6PM–2AM","Thu 6PM–2AM","Fri 6PM–2AM","Sat 6PM–2AM","Sun 6PM–2AM"],
+    phone:"+63 917 549 2264", ig:"", web:"https://www.blindpig.ph", award:"2026 Best 20"
+  },
+  {
+    name:"Fat Cat", area:"Makati Central Square", lat:14.5526758, lng:121.0147705,
+    addr:"2/F G14, Makati Central Square, Amorsolo St, Makati",
+    rating:4.7, count:147, price:"₱400–600 a cocktail",
+    tags:["Jazz kissa","Vinyl","Tarot menu","Reserve ahead"],
+    vibe:"A Japanese jazz kissaten in spirit — vinyl spinning, unpretentious, and small enough to feel like someone's living room. The current menu is built around the major arcana of the tarot.",
+    orders:["The High Priestess","The Tower","The Emperor","The Fool","Their dirty martini"],
+    hours:["Mon Closed","Tue 1PM–1AM","Wed 1PM–1AM","Thu 1PM–1AM","Fri 1PM–1AM","Sat 1PM–1AM","Sun 1PM–1AM"],
+    phone:"+63 968 357 0958", ig:"https://www.instagram.com/fat.cat.ph",
+    web:"https://www.fatcatph.com/", award:"2026 Best 20 · 2025 Bar of the Year"
+  },
+  {
+    name:"Good Morning Wines", area:"Salcedo Village, Makati", lat:14.5605569, lng:121.0209519,
+    addr:"Mezzanine, Prince Tower, 14 Tordesillas St, Salcedo Village, Makati",
+    rating:5.0, count:25, price:"₱500–900 a glass · flights available",
+    tags:["Japanese wine","Six seats","Tasting flights","Owner-run"],
+    vibe:"The only Japanese wine specialist in the country, run personally by its two owners across six seats. Four to six wines rotate monthly, by the glass or as a flight, with Hokkaido cheese alongside.",
+    orders:["The monthly tasting flight","White pét-nat","Japanese chardonnay","An orange wine pour","Hokkaido cheese plate"],
+    hours:["Mon Closed","Tue Closed","Wed 5–11PM","Thu 5–11PM","Fri 5–11PM","Sat 5–11PM","Sun Closed"],
+    phone:"", ig:"https://www.instagram.com/goodmorningwines",
+    web:"https://goodmorningwines.com", award:"2026 Best 20"
+  },
+  {
+    name:"The Grasshopper Bar", area:"Legazpi Village, Makati", lat:14.5559304, lng:121.0196224,
+    addr:"G/F OPL Building, C. Palanca St, Legazpi Village, Makati",
+    rating:4.6, count:152, price:"₱450–650 a cocktail",
+    tags:["Ingredient-forward","Local produce","Great food","Hidden sign"],
+    vibe:"Look for the small grasshopper sign, easy to walk past. Seventeen serves built on underrated Philippine produce, and a kitchen reimagining Filipino street food. Warm, loud in the good way, genuinely welcoming.",
+    orders:["Hollow Echo","V for Ventura","Belladonna","Glory Fizz","Their tiramisu"],
+    hours:["Mon 5PM–2AM","Tue 5PM–2AM","Wed 5PM–2AM","Thu 5PM–2AM","Fri 5PM–2AM","Sat 5PM–2AM","Sun 5PM–2AM"],
+    phone:"+63 927 085 6045", ig:"https://www.instagram.com/grasshopperph",
+    web:"https://www.facebook.com/grasshopperph/", award:"2026 Best 20"
+  },
+  {
+    name:"Ito", area:"Legazpi Village, Makati", lat:14.552473, lng:121.0176032,
+    addr:"1/F 107 Aguirre St, Legazpi Village, Makati",
+    rating:4.9, count:75, price:"₱450–650 a cocktail · flights ₱800+",
+    tags:["Coffee & tea","Seven seats","Seasonal","Best Service 2026"],
+    vibe:"A 'beverage space' run by a husband-and-wife pair, born from hosting friends at home. Coffee and tea flights in the afternoon, cocktails at night, seasonal local produce throughout. Walk-ins now welcome.",
+    orders:["Tomato is a Fruit","Last Leaf","Apples and Oranges","The three-course coffee flight","Usucha or a tea flight"],
+    hours:["Mon Closed","Tue Closed","Wed 1–9PM","Thu 1–9PM","Fri 1–9PM","Sat 12–9PM","Sun 12–9PM"],
+    phone:"", ig:"https://www.instagram.com/ito.space",
+    web:"https://www.ito.ooo/", award:"2026 BEST SERVICE · Best 20"
+  },
+  {
+    name:"Lit", area:"Serendra, BGC", lat:14.5497029, lng:121.0540102,
+    addr:"G/F Unit 1C10, Serendra, 11th Ave, BGC, Taguig",
+    rating:4.6, count:153, price:"₱500–800 a cocktail · pours vary widely",
+    tags:["Japanese whisky","Rare vintages","Charred wood","BGC prices"],
+    vibe:"The country's first dedicated Japanese spirits bar. Charred shou sugi ban walls, an expert on hand, and a deep bench of rare vintages you can take as flights. Otsumami, steaks and pasta to go with.",
+    orders:["Manila Old Fashioned","Summer in Hokkaido","Sake Martini","A Japanese whisky flight","The otsumami plate"],
+    hours:["Mon 6PM–12AM","Tue 6PM–12AM","Wed 6PM–12AM","Thu 6PM–12AM","Fri 6PM–1AM","Sat 6PM–1AM","Sun 6PM–12AM"],
+    phone:"+63 917 510 0014", ig:"https://www.instagram.com/litmanila",
+    web:"https://www.lit.ph", award:"2026 Best 20 · 2024 Asia 100"
+  },
+  {
+    name:"The Lost Unicorn", area:"Cebu City, Cebu", lat:10.3170715, lng:123.9024193,
+    addr:"U/G One Montage, Archbishop Reyes Ave, Cebu City",
+    rating:4.8, count:36, price:"₱400–600 a cocktail",
+    tags:["Korean flavours","Speakeasy","Locker door","Cebu"],
+    vibe:"Enter through Eat& and push the locker door. Korean flavours drive story-led cocktails, but hospitality is the point — founder John Park's team pours shots before you've ordered and sends you off with recommendations.",
+    orders:["Yakgwa","Makgeolli","Bingsu","Dasik","The long-cut fries"],
+    hours:["Mon Closed","Tue 6:30PM–1AM","Wed 6:30PM–1AM","Thu 6:30PM–1AM","Fri 6:30PM–2AM","Sat 6:30PM–2AM","Sun 6:30PM–1AM"],
+    phone:"+63 927 798 5540", ig:"https://www.instagram.com/the.lost.unicorn",
+    web:"http://www.facebook.com/thelostunicorn", award:"2026 Best 20"
+  },
+  {
+    name:"No Entry", area:"BGC, Taguig", lat:14.5497, lng:121.0454695,
+    addr:"G/F Unit G-4B, One/Neo, 3rd Ave cor 26th St, BGC, Taguig",
+    rating:4.4, count:81, price:"₱500–700 a cocktail",
+    tags:["Best Design 2026","Below ground","Supper club","Live music"],
+    vibe:"Down a loading dock and a dim staircase into a below-ground speakeasy and supper club co-founded by Apl.de.ap. Taboo-themed cocktails, serious ferments, a sound system people rave about, and a full dinner menu.",
+    orders:["Arson","Cold Turkey","The Red Button","Forbidden Fruit","Tobiko pasta"],
+    hours:["Mon 4PM–1AM","Tue 4PM–1AM","Wed 4PM–1AM","Thu 4PM–1AM","Fri 4PM–2AM","Sat 6PM–2AM","Sun 6PM–1AM"],
+    phone:"+63 945 617 5129", ig:"https://www.instagram.com/noentry.bgc",
+    web:"https://www.noentrybarph.com/", award:"2026 BEST DESIGN · Best 20"
+  },
+  {
+    name:"Problem Child", area:"Jupiter St, Makati", lat:14.561756, lng:121.0282922,
+    addr:"Unit 107 G/F, 369 Executive Building, Jupiter St, Makati",
+    rating:4.5, count:46, price:"₱550 a cocktail",
+    tags:["Best New Bar 2026","Colour-themed","No back bar","Small"],
+    vibe:"Every menu is built around a single colour, projected on a screen where the back bar would normally be. Culinary technique meets mixology; classics arrive with an unruly twist. Small room — come early.",
+    orders:["Martini","Ube","Amethyst","The quesabirria","The siomai"],
+    hours:["Mon 6PM–2AM","Tue 6PM–2AM","Wed 6PM–2AM","Thu 6PM–2AM","Fri 6PM–2AM","Sat 6PM–2AM","Sun Closed"],
+    phone:"", ig:"https://www.instagram.com/problemchild_ph", web:"", award:"2026 BEST NEW BAR · Best 20"
+  },
+  {
+    name:"Raion", area:"Addition Hills, San Juan", lat:14.5963459, lng:121.038406,
+    addr:"3/F The Corner House, Addition Hills, San Juan",
+    rating:4.6, count:58, price:"₱450–650 a cocktail",
+    tags:["Café by day","Japanese-European","Work-friendly","Events"],
+    vibe:"Coffee and sandwiches by day, cocktails by night, all in a mezzanine above a busy community space. Classics reworked with modern technique, Japanese-European small plates, and a menu themed on the four elements.",
+    orders:["Aglio Olio","Reservoir","Bloody Mary","A Japanese highball","The Reuben sandwich"],
+    hours:["Mon Closed","Tue 10AM–1AM","Wed 10AM–1AM","Thu 10AM–1AM","Fri 10AM–1AM","Sat 10AM–1AM","Sun 10AM–1AM"],
+    phone:"+63 967 173 2804", ig:"https://www.instagram.com/raion.mnl",
+    web:"https://www.facebook.com/raion.mnl", award:"2026 Best 20 · 2025 Best New Bar"
+  },
+  {
+    name:"Recraft", area:"Laging Handa, Quezon City", lat:14.6324215, lng:121.0302176,
+    addr:"39 Scout Tobias St, Laging Handa, Quezon City",
+    rating:4.6, count:102, price:"₱400–600 a cocktail",
+    tags:["Best Innovation 2026","Bespoke Mondays","Nikka Room","Great food"],
+    vibe:"Experimental but never precious — the menu riffs on classics with its tongue firmly in cheek, and on bespoke nights you fill out a card and they build to it. Home to the country's first dedicated Nikka whisky room.",
+    orders:["Best F***in Amaretto","Dirtiest Martini","All-Time Highball","A bespoke card drink","A pour in the Nikka Room"],
+    hours:["Mon 6PM–1AM","Tue 6PM–1AM","Wed 6PM–1AM","Thu 6PM–1AM","Fri 6PM–3AM","Sat 6PM–3AM","Sun 6PM–1AM"],
+    phone:"+63 917 527 2882", ig:"https://www.instagram.com/recraft.bar", web:"", award:"2026 BEST INNOVATION · Best 20"
+  },
+  {
+    name:"Run Rabbit Run", area:"Poblacion, Makati", lat:14.5661394, lng:121.0306149,
+    addr:"G/F Six Axis Center, 4347 B. Valdez St, Poblacion, Makati",
+    rating:4.7, count:377, price:"₱450–650 a cocktail",
+    tags:["Since 2018","Storybook menu","Cocktail classes","Café by day"],
+    vibe:"A Poblacion mainstay in a newer, more elevated room. Seasonal menus built on childhood stories and playful imaginings, a team known for creativity, and an interactive cocktail class programme worth booking.",
+    orders:["The Mad Hatter","Latik","Curious & Curiouser","Monocle (no soda)","Tipsy Halo-Halo"],
+    hours:["Mon 8AM–4PM, 6PM–1AM","Tue 8AM–4PM, 6PM–1AM","Wed 8AM–4PM, 6PM–1AM","Thu 8AM–4PM, 6PM–2AM","Fri 8AM–4PM, 6PM–3AM","Sat 8AM–4PM, 6PM–3AM","Sun 6PM–1AM"],
+    phone:"+63 926 302 2441", ig:"http://www.instagram.com/runrabbitrun.ph",
+    web:"http://www.runrabbit.run", award:"2026 Best 20"
+  },
+  {
+    name:"Skybar", area:"Vertis North, Quezon City", lat:14.6494872, lng:121.0350868,
+    addr:"38/F Solaire Resort North, 1 Solaire Way, Vertis North, Quezon City",
+    rating:4.4, count:38, price:"₱600–900 a cocktail · happy hour promos",
+    tags:["Rooftop","38th floor","DJs & live bands","Celestial menu"],
+    vibe:"Thirty-eight floors up, with a 360° view over Quezon City's lights. Celestial-themed cocktails, a kitchen behind the bar chow, and live bands or a DJ most nights. Ask about the happy-hour promo.",
+    orders:["Lunar","Milkyway","Gemini (Intro & Extro)","A low- or zero-ABV serve","The happy-hour bites"],
+    hours:["Hours vary — check ahead","","","","","",""],
+    phone:"+63 2 8888 8888", ig:"https://www.instagram.com/solaire_skybar",
+    web:"http://sn.solaireresort.com/", award:"2026 Best 20 · 2025 Best Design"
+  },
+  {
+    name:"Southbank Café + Lounge", area:"BGC, Taguig", lat:14.5530771, lng:121.0480351,
+    addr:"G/F World Plaza Building, 5th Ave, BGC, Taguig",
+    rating:4.5, count:81, price:"₱450–650 a cocktail",
+    tags:["Melbourne café","All-day","Coffee to cocktails","Three branches"],
+    vibe:"Melbourne café culture transplanted to BGC. The drinks menu runs like a day — café, breakfast, mains, lounge — so the room shifts from flat whites in the morning to inventive cocktails at night.",
+    orders:["Banana Hypeball","Mojito + orange blossom + patchouli","Ramen Not Ramen","An iced flat white","Banoffee pie"],
+    hours:["Mon 7AM–12AM","Tue 7AM–12AM","Wed 7AM–12AM","Thu 7AM–2AM","Fri 7AM–2AM","Sat 7AM–2AM","Sun 7AM–12AM"],
+    phone:"+63 954 238 8979", ig:"https://www.instagram.com/southbankcafelounge",
+    web:"https://www.southbankcafelounge.com/", award:"2026 Best 20"
+  },
+  {
+    name:"The Spirits Library", area:"Poblacion, Makati", lat:14.5654632, lng:121.0306399,
+    addr:"4963 Guerrero St, Poblacion, Makati",
+    rating:4.7, count:551, price:"₱500–800 a cocktail · rare pours priced up",
+    tags:["Rare bottles","Historic drinks","Live jazz","Two storeys of booze"],
+    vibe:"One of Asia's most extensive collections of rare bottles, vintage glassware and old bar books, stacked two storeys high. The menu draws on a 1939 travelogue, reworking historic drinks with modern technique.",
+    orders:["Cavinti Fizz","Lintik Revival","Librarian's Julep","A rare bottle pour","A dish from Kampai next door"],
+    hours:["Mon 6PM–3AM","Tue 6PM–3AM","Wed 6PM–3AM","Thu 6PM–3AM","Fri 6PM–3AM","Sat 6PM–3AM","Sun 6PM–3AM"],
+    phone:"+63 917 160 1162", ig:"https://www.instagram.com/thespiritslibrary",
+    web:"https://www.thespiritslibrary.com/", award:"2026 Best 20 · 2024 Asia 100"
+  }
+];
+
+/* Press photos from the Tatler article, loaded from their CDN.
+   If a URL stops working, swap in your own image links here. */
+const PICS = {
+  "The Back Room":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172203-tatler-best-bars-ph-2026-the-back-room-1_cover_1280x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-the-back-room-3_cover_1280x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-the-back-room-2_cover_1280x1600.jpg"],
+  "Bar by East":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172201-tatler-best-bars-ph-2026-bar-by-east-1_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172203-tatler-best-bars-ph-2026-bar-by-east-3_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tatler-best-bars-ph-2026-bar-by-east-2_cover_1600x1067.jpg"],
+  "Bar Flora":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-bar-flora-1_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tatler-best-bars-ph-2026-bar-flora-2_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-bar-flora-3_cover_1067x1600.jpg"],
+  "Big Fuzz":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172205-tbph-2026-best-bars-big-fuzz_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17174107-2tatler-best-bars-ph-2026-big-fuzz_cover_1600x1067.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17174107-1tatler-best-bars-ph-2026-big-fuzz_cover_1067x1600.jpg"],
+  "Blank Space":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-blank-space-1_cover_1080x1350.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-blank-space-2_cover_1350x900.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-blank-space-3_cover_1080x1350.jpeg"],
+  "Blind Pig":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172201-tatler-best-bars-ph-2026-blind-pig-1_cover_1200x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-blind-pig-2_cover_1200x1600.jpeg"],
+  "Fat Cat":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-fat-cat-1_cover_1067x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-fat-cat-2_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tatler-best-bars-ph-2026-fat-cat-3_cover_1067x1600.jpg"],
+  "Good Morning Wines":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-good-morning-wines-1_cover_1280x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-good-morning-wines-2_cover_1280x1600.jpg"],
+  "The Grasshopper Bar":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172202-tatler-best-bars-ph-2026-grasshopper-bar-tbph-2026jpg_cover_1280x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172205-tatler-best-bars-ph-2026-grasshopper-bar_cover_1600x1280.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172203-tatler-best-bars-ph-2026-grasshopper-bar-tbph-2026_cover_1280x1600.jpg"],
+  "Ito":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-talter-best-ph-tatler-best-bars-ito-1_cover_1000x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172205-talter-best-ph-tatler-best-bars-ito-2_cover_1200x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172205-talter-best-ph-tatler-best-bars-ito-3_cover_1066x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-talter-best-ph-tatler-best-bars-ito-4_cover_999x1600.jpg"],
+  "Lit":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172203-tatler-best-bars-ph-2026-lit-1_cover_1600x1067.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172202-tatler-best-bars-ph-2026-lit-2_cover_1600x1067.jpeg"],
+  "The Lost Unicorn":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-the-lost-unicorn-1_cover_1067x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-the-lost-unicorn-2_cover_1067x1600.jpg"],
+  "No Entry":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17175716-tatler-best-bars-ph-2026-no-entry-1_cover_1066x1600.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17175716-tatler-best-bars-ph-2026-no-entry-2_cover_1066x1600.jpg"],
+  "Problem Child":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tbph-2026-best-bars-problem-child_cover_1199x1600.JPEG","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tbph-tatler-best-bars-problem-child-1_cover_1200x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172159-tbph-tatler-best-bars-problem-child-2_cover_1067x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172159-tbph-tatler-best-bars-problem-child-4_cover_1599x1062.jpeg"],
+  "Raion":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-raion-1_cover_1067x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-raion-2_cover_1067x1600.jpeg"],
+  "Recraft":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-talter-best-ph-tatler-best-bars-recraft-1_cover_1067x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-talter-best-ph-tatler-best-bars-recraft-2_cover_1067x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-talter-best-ph-tatler-best-bars-recraft-3_cover_1067x1600.jpeg"],
+  "Run Rabbit Run":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-run-rabbit-run_cover_1080x1350.jpg"],
+  "Skybar":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172205-tatler-best-bars-ph-2026-skybar-1_cover_1600x1067.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tatler-best-bars-ph-2026-skybar-2_cover_1600x1065.jpg"],
+  "Southbank Café + Lounge":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-southbank-cafe-lounge-1_cover_1066x1600.jpeg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-southbank-cafe-lounge-2_cover_1067x1600.jpeg"],
+  "The Spirits Library":["https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172204-tatler-best-bars-ph-2026-the-spirits-library-1_cover_1599x1066.jpg","https://cdn.tatlerasia.com/tatlerasia/i/2026/03/17172200-tatler-best-bars-ph-2026-the-spirits-library-2_cover_1280x1599.jpg"],
+};
+BARS.forEach(b => b.pics = PICS[b.name] || []);
+
+/* What kind of room each one is. Bars can sit in more than one.
+   Add or rename freely — the type filter builds itself from this. */
+const KIND = {
+  "The Back Room":["Speakeasy","Cocktail bar","Hotel bar"],
+  "Bar by East":["Cocktail bar","Neighbourhood"],
+  "Bar Flora":["Cocktail bar","Tea house","Neighbourhood"],
+  "Big Fuzz":["Speakeasy","Listening bar","Cocktail bar"],
+  "Blank Space":["Cocktail bar","Party bar","Food-forward"],
+  "Blind Pig":["Speakeasy","Cocktail bar"],
+  "Fat Cat":["Listening bar","Jazz bar","Café by day"],
+  "Good Morning Wines":["Wine bar","Tasting counter"],
+  "The Grasshopper Bar":["Cocktail bar","Neighbourhood","Food-forward"],
+  "Ito":["Cocktail bar","Café by day","Tea house","Tasting counter"],
+  "Lit":["Whisky bar","Cocktail bar"],
+  "The Lost Unicorn":["Speakeasy","Cocktail bar"],
+  "No Entry":["Speakeasy","Supper club","Live music"],
+  "Problem Child":["Cocktail bar","Speakeasy","Food-forward"],
+  "Raion":["Cocktail bar","Café by day","Neighbourhood"],
+  "Recraft":["Cocktail bar","Whisky bar","Neighbourhood","Food-forward"],
+  "Run Rabbit Run":["Cocktail bar","Café by day"],
+  "Skybar":["Rooftop","Party bar","Live music"],
+  "Southbank Café + Lounge":["Café by day","Cocktail bar","Food-forward"],
+  "The Spirits Library":["Cocktail bar","Whisky bar","Live music"],
+};
+BARS.forEach(b => b.kind = KIND[b.name] || []);
+
+/* ============================================================
+   STATE — held in memory for this session only.
+   ============================================================ */
+const status = new Array(BARS.length).fill(null);
+let filter = "all";
+let typeFilter = null;   // null = any type
+let query = "";
+let sortBy = "name";
+let openIdx = null;
+
+const listEl   = document.getElementById('list');
+const detailEl = document.getElementById('detail');
+const shelfEl  = document.getElementById('shelf');
+const typesEl  = document.getElementById('types');
+const cntEl    = document.getElementById('cnt');
+const toolbar  = document.getElementById('toolbar');
+const countEl  = document.getElementById('count');
+const clearAll = document.getElementById('clearall');
+const resetBtn = document.getElementById('reset');
+const tipEl    = document.getElementById('tip');
+const qEl      = document.getElementById('q');
+const qClear   = document.getElementById('qclear');
+
+/* ---------- Saving your marks ----------
+   Works on a real site (GitHub Pages, your own machine). Some sandboxed
+   previews block storage entirely, so every call is guarded — if it's
+   unavailable the app still runs, it just forgets between visits. */
+const KEY = 'pourlist.v1';
+function store(){
+  try{ return window.localStorage; }catch(e){ return null; }
+}
+function save(){
+  const s = store(); if(!s) return;
+  try{ s.setItem(KEY, JSON.stringify({status, tip:tipEl.hidden})); }catch(e){}
+}
+function load(){
+  const s = store();
+  let saved = null;
+  if(s){ try{ saved = JSON.parse(s.getItem(KEY) || 'null'); }catch(e){} }
+  if(saved && Array.isArray(saved.status) && saved.status.length === BARS.length){
+    saved.status.forEach((v,i)=>{ status[i] = (v==='poured'||v==='listed') ? v : null; });
+  }
+  tipEl.hidden = !!(saved && saved.tip);   // show the tip only on a first visit
+}
+
+/* ---------- Map ---------- */
+const map = L.map('map',{zoomControl:true,attributionControl:true}).setView([14.5680,121.0290],12);
+L.control.scale({imperial:false,position:'bottomright'}).addTo(map);
+
+const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'&copy; OpenStreetMap contributors', maxZoom:19, crossOrigin:true
+}).addTo(map);
+
+const DISTRICTS = [
+  ["Quezon City",      14.6480, 121.0250],
+  ["Vertis North",     14.6530, 121.0351],
+  ["Marikina",         14.6470, 121.1043],
+  ["San Juan",         14.6030, 121.0330],
+  ["Mandaluyong",      14.5930, 121.0412],
+  ["Poblacion",        14.5700, 121.0306],
+  ["Salcedo Village",  14.5645, 121.0210],
+  ["Legazpi Village",  14.5590, 121.0130],
+  ["BGC",              14.5560, 121.0540],
+  ["Manila Bay \u2192",     14.5400, 120.9700]
+];
+
+/* Tiles come from an outside server. If it's genuinely unreachable we draw a
+   plain positional backdrop instead of leaving a void — but only if NOTHING
+   ever loads. Odd tiles 404 at the edges of the world all the time, and
+   treating those as failure was blanking maps that were working fine. */
+let fellBack = false, anyTileLoaded = false, districtLayer = null, noticeEl = null;
+
+tiles.on('tileload', ()=>{
+  anyTileLoaded = true;
+  if(fellBack) undoFallback();      // recovered — put the real map back
+});
+
+function useFallback(){
+  if(fellBack || anyTileLoaded) return;
+  fellBack = true;
+  map.getContainer().classList.add('no-tiles');
+
+  districtLayer = L.layerGroup(DISTRICTS.map(([name,lat,lng])=>
+    L.marker([lat,lng],{
+      interactive:false, keyboard:false,
+      icon:L.divIcon({className:'',html:`<div class="district">${name}</div>`,iconSize:[0,0]})
+    })
+  )).addTo(map);
+
+  noticeEl = document.createElement('div');
+  noticeEl.className = 'notice';
+  noticeEl.innerHTML = '<b>Street map didn\u2019t load.</b> Showing pin positions only. ' +
+    'Check your connection, or open this file from a real address rather than a preview.';
+  document.getElementById('map').appendChild(noticeEl);
+}
+
+function undoFallback(){
+  fellBack = false;
+  map.getContainer().classList.remove('no-tiles');
+  if(districtLayer){ map.removeLayer(districtLayer); districtLayer = null; }
+  if(noticeEl){ noticeEl.remove(); noticeEl = null; }
+}
+
+// Give the network a fair chance before giving up, and keep checking after.
+setTimeout(()=>{ if(!anyTileLoaded) useFallback(); }, 9000);
+setTimeout(()=>{ if(!anyTileLoaded) useFallback(); }, 20000);
+
+/* ---------- Markers ---------- */
+const markers = BARS.map((b,i)=>{
+  const m = L.marker([b.lat,b.lng],{
+    icon:L.divIcon({className:'',html:'<div class="pin"></div>',iconSize:[15,15],iconAnchor:[7,7]}),
+    title:b.name, keyboard:true, alt:b.name, riseOnHover:true
+  }).addTo(map);
+
+  // autoPan off: it used to fight the fly-to and leave the popup off-screen,
+  // which is why a bar sometimes appeared to vanish when you selected it.
+  m.bindPopup(
+    `<div class="pop-n">${b.name}</div><div class="pop-m">${b.area} \u00b7 \u2605 ${b.rating}</div>`,
+    {autoPan:false, closeButton:true}
+  );
+  m.bindTooltip(b.name, {direction:'top', offset:[0,-9], className:'pin-tip', opacity:1});
+
+  m.on('click', ()=> openDetail(i));
+  m.on('mouseover', ()=> highlight(i, true));
+  m.on('mouseout',  ()=> highlight(i, false));
+  return m;
+});
+
+/* Move to a bar and show its label, reliably. The popup opens after the pan
+   settles rather than during it. */
+let popTimer;
+function focusBar(i, zoom){
+  const b = BARS[i];
+  map.flyTo([b.lat, b.lng], Math.max(map.getZoom(), zoom || 15), {duration:.55});
+  clearTimeout(popTimer);
+  popTimer = setTimeout(()=>{
+    if(!passes(i)) return;                    // filtered out while we were moving
+    const el = markers[i].getElement();
+    if(el && el.style.display !== 'none') markers[i].openPopup();
+  }, 620);
+}
+
+/* Row hover -> light up the matching pin. */
+let panTimer;
+function highlight(i, on){
+  const el = markers[i].getElement();
+  if(!el) return;
+  const pin = el.querySelector('.pin');
+  if(pin) pin.classList.toggle('hi', on);
+
+  // No point moving a map that isn't currently on screen.
+  const mapVisible = document.getElementById('map').offsetParent !== null;
+
+  clearTimeout(panTimer);
+  if(on){
+    if(mapVisible) markers[i].openTooltip();
+    // Nudge into view only if it's actually off-screen, and only if the
+    // pointer rests a moment — otherwise sweeping the list lurches the map.
+    if(mapVisible) panTimer = setTimeout(()=>{
+      const ll = markers[i].getLatLng();
+      if(!map.getBounds().pad(-0.12).contains(ll)) map.panInside(ll, {padding:[60,60]});
+    }, 280);
+  }else{
+    markers[i].closeTooltip();
+  }
+}
+
+/* ---------- Rendering ---------- */
+const GLASS = `<svg viewBox="0 0 15 22" aria-hidden="true"><path d="M2 2h11l-4 8v8h3v2H3v-2h3v-8L2 2z" fill="FILL" stroke="STROKE" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
+
+function glassSvg(st){
+  if(st==='poured') return GLASS.replace('FILL','#E0A040').replace('STROKE','#E0A040');
+  if(st==='listed') return GLASS.replace('FILL','none').replace('STROKE','#7FB6A9');
+  return GLASS.replace('FILL','none').replace('STROKE','#D3C7DE');
+}
+
+function renderShelf(){
+  shelfEl.innerHTML = '';
+  BARS.forEach((b,i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'glass' + (status[i] ? ' on' : '');
+    btn.innerHTML = glassSvg(status[i]);
+    btn.title = b.name;
+    btn.setAttribute('aria-label', b.name + (status[i] ? ' — ' + (status[i]==='poured'?'poured':'on the list') : ''));
+    btn.onclick = ()=>openDetail(i);
+    shelfEl.appendChild(btn);
+  });
+  cntEl.textContent = status.filter(s=>s==='poured').length;
+  resetBtn.hidden = !status.some(s=>s!==null);
+}
+
+function passes(i){
+  const b = BARS[i];
+  if(query){
+    const hay = [b.name, b.area, b.addr, b.kind.join(' '), b.tags.join(' '), b.orders.join(' ')]
+      .join(' ').toLowerCase();
+    if(!query.split(/\s+/).every(w => hay.includes(w))) return false;
+  }
+  if(typeFilter && !b.kind.includes(typeFilter)) return false;
+  if(filter==='all') return true;
+  if(filter==='none') return status[i]===null;
+  return status[i]===filter;
+}
+
+function filtersOn(){ return query || typeFilter || filter!=='all'; }
+
+/* Type chips build themselves from the data, most common first. */
+function renderTypes(){
+  const tally = {};
+  BARS.forEach(b => b.kind.forEach(k => tally[k] = (tally[k]||0)+1));
+  const kinds = Object.keys(tally).sort((a,b)=> tally[b]-tally[a] || a.localeCompare(b));
+
+  typesEl.innerHTML = '';
+
+  const any = document.createElement('button');
+  any.className = 'chip type';
+  any.textContent = 'Any type';
+  any.setAttribute('aria-pressed', String(typeFilter===null));
+  any.onclick = ()=>{ typeFilter = null; closeDetail(); renderAll(); };
+  typesEl.appendChild(any);
+
+  kinds.forEach(k=>{
+    const c = document.createElement('button');
+    c.className = 'chip type';
+    c.innerHTML = `${k}<span class="n">${tally[k]}</span>`;
+    c.setAttribute('aria-pressed', String(typeFilter===k));
+    c.onclick = ()=>{ typeFilter = (typeFilter===k) ? null : k; closeDetail(); renderAll(); };
+    typesEl.appendChild(c);
+  });
+}
+
+function renderList(keepScroll){
+  const y = keepScroll ? listEl.scrollTop : 0;
+  listEl.innerHTML = '';
+  let shown = BARS.map((b,i)=>i).filter(passes);
+
+  // Sorting
+  const cmp = {
+    name:   (a,b)=> BARS[a].name.replace(/^The /,'').localeCompare(BARS[b].name.replace(/^The /,'')),
+    rating: (a,b)=> BARS[b].rating - BARS[a].rating || BARS[b].count - BARS[a].count,
+    area:   (a,b)=> BARS[a].area.localeCompare(BARS[b].area) || BARS[a].name.localeCompare(BARS[b].name)
+  }[sortBy];
+  shown.sort(cmp);
+
+  // Result count + clear affordance
+  countEl.textContent = shown.length === BARS.length
+    ? `All ${BARS.length} bars`
+    : `${shown.length} of ${BARS.length}`;
+  clearAll.hidden = !filtersOn();
+
+  if(!shown.length){
+    listEl.innerHTML = `<div class="empty">
+        No bars match that.<br>Try a different search or clear the filters.
+      </div>`;
+    return;
+  }
+
+  shown.forEach(i=>{
+    const b = BARS[i];
+    const st = status[i];
+    const ini = b.name.replace(/^The /,'').charAt(0);
+
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.dataset.i = i;
+
+    const thumb = b.pics.length
+      ? `<span class="thumb"><img src="${b.pics[0]}" alt="" loading="lazy"
+           onerror="this.parentNode.classList.add('failed')"><span class="ph">${ini}</span></span>`
+      : `<span class="thumb failed"><span class="ph">${ini}</span></span>`;
+
+    // Tapping the body of the row opens the bar
+    const open = document.createElement('button');
+    open.className = 'rowmain';
+    open.innerHTML =
+      `${thumb}
+       <span class="rowtext">
+         <span class="row-name">${b.name}</span>
+         <span class="row-kind">${b.kind.join(' \u00b7 ')}</span>
+         <span class="row-meta">${b.area} <span class="row-rate">\u2605 ${b.rating}</span></span>
+       </span>`;
+    open.onclick = ()=> openDetail(i);
+    open.setAttribute('aria-label', `${b.name}, ${b.area}. Open details.`);
+
+    // Hovering (or tabbing to) a row lights up its pin on the map.
+    const on  = ()=>{ row.classList.add('hi');    highlight(i, true);  };
+    const off = ()=>{ row.classList.remove('hi'); highlight(i, false); };
+    row.addEventListener('mouseenter', on);
+    row.addEventListener('mouseleave', off);
+    open.addEventListener('focus', on);
+    open.addEventListener('blur', off);
+
+    // Mark it without opening anything
+    const marks = document.createElement('div');
+    marks.className = 'marks';
+    [['poured','Poured'],['listed','On the list']].forEach(([k,label])=>{
+      const btn = document.createElement('button');
+      btn.dataset.k = k;
+      btn.className = 'mk' + (k==='listed' ? ' ring' : '') + (st===k ? ' on-'+k : '');
+      btn.innerHTML = '<i></i>';
+      btn.title = st===k ? `${b.name} \u2014 ${label}. Select to undo.` : `Mark ${b.name} as ${label.toLowerCase()}`;
+      btn.setAttribute('aria-label', btn.title);
+      btn.setAttribute('aria-pressed', String(st===k));
+      btn.onclick = (e)=>{ e.stopPropagation(); setStatus(i,k); };
+      marks.appendChild(btn);
+    });
+
+    row.appendChild(open);
+    row.appendChild(marks);
+    listEl.appendChild(row);
+  });
+
+  if(y) listEl.scrollTop = y;
+}
+
+/* One place to change a bar's status, so everything stays in sync.
+   Repaints only what changed — rebuilding the whole list would throw you
+   back to the top every time you marked something. */
+function setStatus(i, want){
+  status[i] = (status[i]===want) ? null : want;
+  save();
+
+  // The open bar's own Poured / On-the-list buttons
+  if(openIdx===i) paintDetailStatus(i);
+
+  // The row in the directory
+  const row = listEl.querySelector(`.row[data-i="${i}"]`);
+  if(row && passes(i)){
+    paintRowMarks(row, i);          // still belongs in this view — just recolour it
+  }else{
+    renderList(true);               // it filtered in or out; rebuild, keeping scroll
+  }
+
+  renderShelf();
+  renderMarkers();
+}
+
+/* Recolour a row's two mark buttons without touching the rest of the DOM. */
+function paintRowMarks(row, i){
+  const st = status[i];
+  const name = BARS[i].name;
+  row.querySelectorAll('.mk').forEach(btn=>{
+    const k = btn.dataset.k;
+    const label = k==='poured' ? 'Poured' : 'On the list';
+    btn.className = 'mk' + (k==='listed' ? ' ring' : '') + (st===k ? ' on-'+k : '');
+    btn.title = st===k ? `${name} — ${label}. Select to undo.` : `Mark ${name} as ${label.toLowerCase()}`;
+    btn.setAttribute('aria-label', btn.title);
+    btn.setAttribute('aria-pressed', String(st===k));
+  });
+}
+
+/* Same idea for the buttons inside an open bar's panel. */
+function paintDetailStatus(i){
+  detailEl.querySelectorAll('.st').forEach(btn=>{
+    const k = btn.dataset.set;
+    btn.className = 'st' + (status[i]===k ? ' on-'+k : '');
+    btn.setAttribute('aria-pressed', String(status[i]===k));
+  });
+}
+
+function renderMarkers(){
+  markers.forEach((m,i)=>{
+    const holder = m.getElement();
+    if(!holder) return;
+    const el = holder.querySelector('.pin');
+    if(!el) return;
+
+    const hovered = el.classList.contains('hi');   // don't clobber the hover glow
+    el.className = 'pin'
+      + (status[i] ? ' ' + status[i] : '')
+      + (openIdx===i ? ' active' : '')
+      + (hovered ? ' hi' : '');
+
+    const vis = passes(i);
+    holder.style.display = vis ? '' : 'none';
+    if(!vis){                                       // a hidden pin must not leave
+      m.closePopup();                               // a label floating on the map
+      m.closeTooltip();
+    }
+  });
+}
+
+function renderAll(){ renderShelf(); renderTypes(); renderList(); renderMarkers(); }
+
+/* ---------- Detail view ---------- */
+function openDetail(i){
+  openIdx = i;
+  const b = BARS[i];
+  const todayIdx = (new Date().getDay() + 6) % 7; // Mon = 0
+
+  const orders = b.orders.map((o,n)=>
+    `<div class="order"><span class="n">${String(n+1).padStart(2,'0')}</span><span>${o}</span><span class="lead"></span></div>`
+  ).join('');
+
+  const hours = b.hours.filter(Boolean).map((h,n)=>{
+    const closed = /closed/i.test(h);
+    const today  = b.hours.length===7 && n===todayIdx;
+    return `<div class="${closed?'closed':(today?'today':'')}">${h}${today?'  ←':''}</div>`;
+  }).join('');
+
+  const contact = [];
+  contact.push(`<div class="kv"><span class="k">Directions</span><span class="v"><a href="https://www.google.com/maps/search/?api=1&query=${b.lat},${b.lng}" target="_blank" rel="noopener">Open in Maps ↗</a></span></div>`);
+  if(b.phone) contact.push(`<div class="kv"><span class="k">Phone</span><span class="v"><a href="tel:${b.phone.replace(/\s/g,'')}">${b.phone}</a></span></div>`);
+  if(b.ig)    contact.push(`<div class="kv"><span class="k">Instagram</span><span class="v"><a href="${b.ig}" target="_blank" rel="noopener">Open profile ↗</a></span></div>`);
+  if(b.web)   contact.push(`<div class="kv"><span class="k">Website</span><span class="v"><a href="${b.web}" target="_blank" rel="noopener">Open site ↗</a></span></div>`);
+
+  const initial = b.name.replace(/^The /,'').charAt(0);
+  const shots = b.pics.length ? `<div class="shots">` + b.pics.map(u=>
+      `<div class="shot"><img src="${u}" alt="${b.name}" loading="lazy"
+         onerror="this.parentNode.classList.add('failed')"><span class="ph">${initial}</span></div>`
+    ).join('') + `</div><div class="credit">Photos: Tatler Philippines</div>` : '';
+
+  detailEl.innerHTML = `
+    <button class="back" id="back">← All bars</button>
+    <div class="d-pad">
+      ${shots}
+      <div class="d-name">${b.name}</div>
+      <div class="d-line">
+        <span>${b.area}</span><span>·</span>
+        <span class="rate">★ ${b.rating} <span style="color:var(--dim)">(${b.count})</span></span>
+      </div>
+      <div class="kinds">${b.kind.map(k=>`<button class="kind" data-kind="${k}">${k}</button>`).join('')}</div>
+      <div class="tags">${b.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <p class="d-vibe">${b.vibe}</p>
+
+      <div class="status">
+        <button class="st ${status[i]==='poured'?'on-poured':''}" data-set="poured">Poured</button>
+        <button class="st ${status[i]==='listed'?'on-listed':''}" data-set="listed">On the list</button>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h">Order these five</div>
+        ${orders}
+      </div>
+
+      <div class="sec">
+        <div class="sec-h">Hours</div>
+        <div class="hours">${hours}</div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-h">Details</div>
+        <div class="kv"><span class="k">Address</span><span class="v">${b.addr}</span></div>
+        <div class="kv"><span class="k">Typical</span><span class="v">${b.price}</span></div>
+        <div class="kv"><span class="k">Awards</span><span class="v">${b.award}</span></div>
+        ${contact.join('')}
+      </div>
+
+      <div class="note">
+        Menu prices shown are typical per-drink estimates. Most venues add roughly 22–24% on the bill for service charge and VAT.
+      </div>
+    </div>`;
+
+  detailEl.querySelector('#back').onclick = closeDetail;
+  detailEl.querySelectorAll('.kind').forEach(k=>{
+    k.style.cursor = 'pointer';
+    k.title = 'Show only ' + k.dataset.kind;
+    k.onclick = ()=>{ typeFilter = k.dataset.kind; closeDetail(); renderAll(); };
+  });
+  detailEl.querySelectorAll('.st').forEach(btn=>{
+    btn.onclick = ()=> setStatus(i, btn.dataset.set);
+  });
+
+  toolbar.classList.add('hide');
+  tipEl.hidden = true;
+  listEl.classList.add('hide');
+  detailEl.classList.add('show');
+  detailEl.scrollTop = 0;
+
+  // On a phone the panes don't share the screen, so bring the details forward.
+  if(isPhone()) setView('list');
+
+  focusBar(i);
+  renderMarkers();
+}
+
+function closeDetail(){
+  openIdx = null;
+  detailEl.classList.remove('show');
+  listEl.classList.remove('hide');
+  toolbar.classList.remove('hide');
+  map.closePopup();
+  renderMarkers();
+}
+
+/* ---------- Search ---------- */
+let qt;
+qEl.addEventListener('input', ()=>{
+  qClear.hidden = !qEl.value;
+  clearTimeout(qt);
+  qt = setTimeout(()=>{                 // small delay so typing stays smooth
+    query = qEl.value.trim().toLowerCase();
+    closeDetail();
+    renderAll();
+  }, 130);
+});
+qEl.addEventListener('keydown', e=>{ if(e.key==='Escape'){ qEl.value=''; qEl.dispatchEvent(new Event('input')); } });
+qClear.onclick = ()=>{ qEl.value=''; qEl.dispatchEvent(new Event('input')); qEl.focus(); };
+
+/* ---------- Sort ---------- */
+document.getElementById('sort').onchange = (e)=>{ sortBy = e.target.value; renderList(); };
+
+/* ---------- Status filters ---------- */
+document.querySelectorAll('.filters:not(.types) .chip').forEach(chip=>{
+  chip.onclick = ()=>{
+    filter = chip.dataset.f;
+    document.querySelectorAll('.filters:not(.types) .chip')
+      .forEach(c=>c.setAttribute('aria-pressed', String(c===chip)));
+    closeDetail();
+    renderAll();
+  };
+});
+
+/* ---------- Clear everything ---------- */
+clearAll.onclick = ()=>{
+  query = ''; qEl.value = ''; qClear.hidden = true;
+  typeFilter = null;
+  filter = 'all';
+  document.querySelectorAll('.filters:not(.types) .chip')
+    .forEach(c=>c.setAttribute('aria-pressed', String(c.dataset.f==='all')));
+  closeDetail();
+  renderAll();
+};
+
+resetBtn.onclick = ()=>{
+  if(!confirm('Clear every mark and start the list over?')) return;
+  status.fill(null);
+  save();
+  closeDetail();
+  renderAll();
+};
+
+/* ---------- First-run tip ---------- */
+document.getElementById('tipgo').onclick = ()=>{ tipEl.hidden = true; save(); };
+
+/* ---------- Keyboard ---------- */
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape' && openIdx!==null && document.activeElement!==qEl){
+    closeDetail(); renderAll();
+  }
+  // "/" jumps to search, the way it does most places
+  if(e.key==='/' && document.activeElement!==qEl){
+    e.preventDefault();
+    if(isPhone()) setView('list');
+    qEl.focus(); qEl.select();
+  }
+});
+
+
+/* ---------- Map / Directory switching (phones) ---------- */
+const isPhone = ()=> window.matchMedia('(max-width:820px)').matches;
+
+function setView(v){
+  document.body.classList.toggle('v-map',  v==='map');
+  document.body.classList.toggle('v-list', v==='list');
+  document.querySelectorAll('.mtab').forEach(t=>
+    t.setAttribute('aria-pressed', String(t.dataset.v===v)));
+  if(v==='map') setTimeout(()=>{ map.invalidateSize(); }, 60);
+}
+
+document.querySelectorAll('.mtab').forEach(t=>{ t.onclick = ()=> setView(t.dataset.v); });
+
+/* ---------- Viewport height ----------
+   iOS reports several different "heights" depending on whether the address bar
+   is showing, the app is installed, or the keyboard is up. Measure the one
+   that's actually visible and pin the layout to it. */
+function sizeApp(){
+  const h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+  document.documentElement.style.setProperty('--app-h', h + 'px');
+  map.invalidateSize();
+}
+
+let rsz;
+function nudge(){ clearTimeout(rsz); rsz = setTimeout(sizeApp, 120); }
+
+window.addEventListener('resize', nudge);
+window.addEventListener('orientationchange', ()=>setTimeout(sizeApp, 260));
+window.addEventListener('pageshow', nudge);
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) nudge(); });
+if(window.visualViewport){
+  window.visualViewport.addEventListener('resize', nudge);
+  window.visualViewport.addEventListener('scroll', nudge);
+}
+// Fonts landing can change the header's height, which changes the map's.
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(sizeApp);
+window.addEventListener('load', sizeApp);
+
+/* ---------- Fullscreen ----------
+   Only offered where the browser supports it. iPhone Safari doesn't, so the
+   button stays hidden there — use Add to Home Screen instead. */
+const fsBtn = document.getElementById('fs');
+const canFS = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+if(canFS) fsBtn.classList.add('avail');
+
+fsBtn.onclick = ()=>{
+  const el = document.documentElement;
+  const inFS = document.fullscreenElement || document.webkitFullscreenElement;
+  if(inFS){
+    (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+  }else{
+    (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+  }
+};
+document.addEventListener('fullscreenchange', ()=>{ setTimeout(sizeApp, 120); });
+document.addEventListener('webkitfullscreenchange', ()=>{ setTimeout(sizeApp, 120); });
+
+/* ---------- Go ---------- */
+load();
+setView('map');
+renderAll();
+sizeApp();
+</script>
